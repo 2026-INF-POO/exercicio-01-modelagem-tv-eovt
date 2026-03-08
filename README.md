@@ -1,16 +1,54 @@
 # Exercício: Modelagem TV
 
-1. Edite o arquivo `TV.java` e construa uma modelagem para representar uma TV utilizando as informações abaixo. 
+public class TV {
+    int tamanho;
+    int volume = 5;
+    String marca;
+    int voltagem;
+    int canal = 1;
+    boolean ligada = false;
 
-    Uma televisão possui as seguintes características:
-    - tamanho de tela (em polegadas);
-    - volume: de 1 a 10 iniciando em 5;
-    - marca;
-    - voltagem (220 e 110);
-    - canal.
+    public TV(int tamanho, String marca, int voltagem) {
+        this.tamanho = tamanho;
+        this.marca = marca;
+        this.voltagem = voltagem;
+    }
 
-    A televisão pode realizar as seguintes ações:
-    - ligar: ao ligar a televisão deve imprimir seu consumo. O consumo deve ser definido pela voltagem multiplicada pela quantidades de polegadas;
-    - desligar;
-    - aumentar e diminuir o volume;
-    - subir e descer canal.
+    public void ligar() {
+        ligada = true;
+        System.out.println("TV ligada. Consumo: " + (tamanho * voltagem) + "W");
+    }
+
+    public void desligar() {
+        ligada = false;
+        System.out.println("TV desligada.");
+    }
+
+    public void aumentarVolume() {
+        if(volume < 10) volume++;
+        System.out.println("Volume: " + volume);
+    }
+
+    public void diminuirVolume() {
+        if(volume > 1) volume--;
+        System.out.println("Volume: " + volume);
+    }
+
+    public void subirCanal() {
+        canal++;
+        System.out.println("Canal: " + canal);
+    }
+
+    public void descerCanal() {
+        if(canal > 1) canal--;
+        System.out.println("Canal: " + canal);
+    }
+
+    public static void main(String[] args) {
+        TV minhaTV = new TV(42, "Samsung", 110);
+        minhaTV.ligar();
+        minhaTV.aumentarVolume();
+        minhaTV.subirCanal();
+        minhaTV.desligar();
+    }
+}
